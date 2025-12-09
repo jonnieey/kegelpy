@@ -5,26 +5,33 @@ build-backend = "hatchling.build"
 [project]
 name = "kegelpy"
 dynamic = ["version"]
-description = ''
+description = "A CLI Kegel exercise trainer with progressive levels"
 readme = "README.md"
 requires-python = ">=3.8"
-license = "MIT"
-keywords = []
 authors = [
   { name = "jonnieey", email = "johnjahi55@gmail.com" },
 ]
+license = { text = "MIT" }
+keywords = ["kegel", "exercise", "cli", "trainer", "fitness"]
 classifiers = [
-  "Development Status :: 4 - Beta",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Games/Entertainment",
+    "Topic :: Utilities",
 ]
 dependencies = []
+
+[project.scripts]
+kegelpy = "kegelpy.kegel:main"
 
 [project.urls]
 Documentation = "https://github.com/jonnieey/kegelpy#readme"
@@ -34,28 +41,18 @@ Source = "https://github.com/jonnieey/kegelpy"
 [tool.hatch.version]
 path = "src/kegelpy/__about__.py"
 
-[tool.hatch.envs.types]
-extra-dependencies = [
-  "mypy>=1.0.0",
+[tool.hatch.build]
+include = [
+    "src/kegelpy/*.py",
 ]
-[tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/kegelpy tests}"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kegelpy"]
 
 [tool.coverage.run]
-source_pkgs = ["kegelpy", "tests"]
-branch = true
-parallel = true
+source = ["kegelpy"]
 omit = [
-  "src/kegelpy/__about__.py",
-]
-
-[tool.coverage.paths]
-kegelpy = ["src/kegelpy", "*/kegelpy/src/kegelpy"]
-tests = ["tests", "*/kegelpy/tests"]
-
-[tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__pycache__/*",
 ]
