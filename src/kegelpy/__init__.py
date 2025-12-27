@@ -1,3 +1,3 @@
-# SPDX-FileCopyrightText: 2025-present jonnieey <johnjahi55@gmail.com>
-#
-# SPDX-License-Identifier: MIT
+from .__main__ import main
+
+__all__ = ["main"]
