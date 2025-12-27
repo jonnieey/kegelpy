@@ -28,10 +28,14 @@ classifiers = [
     "Topic :: Games/Entertainment",
     "Topic :: Utilities",
 ]
-dependencies = []
+dependencies = [
+    "textual==6.11.0",
+    "plotext==5.3.2",
+    "textual-plotext==1.0.1"
+]
 
 [project.scripts]
-kegelpy = "kegelpy.kegel:main"
+kegelpy = "kegelpy.__main__:main"
 
 [project.urls]
 Documentation = "https://github.com/jonnieey/kegelpy#readme"
